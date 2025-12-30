@@ -23,7 +23,7 @@ export const useAdmin = () => {
 /* ================= AXIOS ================= */
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || "https://bunai-from-hills-backend.vercel.app/"
+  baseURL: import.meta.env.VITE_API_URL || "https://bunai-from-hills-backend.vercel.app/api"
 })
 
 /* ================= PROVIDER ================= */
