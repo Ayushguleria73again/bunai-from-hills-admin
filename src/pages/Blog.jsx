@@ -16,7 +16,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 
 const IMAGE_BASE_URL =
-  import.meta.env.VITE_API_URL || 'http://localhost:5001'
+  import.meta.env.VITE_API_URL || "https://bunai-from-hills-backend.vercel.app/"
 
 const Blog = () => {
   const {
