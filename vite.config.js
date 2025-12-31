@@ -7,5 +7,14 @@ export default defineConfig({
   server: {
     port: 3001, // Use a different port than the frontend
     open: true
+  },
+  server: {
+    proxy: {
+      "/api": {
+        target: "https://bunai-from-hills-backend.vercel.app",
+        changeOrigin: true,
+        secure: false
+      }
+    }
   }
 })
