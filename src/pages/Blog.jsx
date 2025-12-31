@@ -298,7 +298,7 @@ const Blog = () => {
 
             {/* form kept same */}
             <form onSubmit={handleSubmit}>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                 {/* Title */}
                 <div className="md:col-span-2">
                   <label className="block text-sm font-medium mb-1">
@@ -310,7 +310,7 @@ const Blog = () => {
                     value={currentBlog.title}
                     onChange={handleInputChange}
                     required
-                    className="w-full border rounded px-3 py-2"
+                    className="w-full rounded border px-3 py-2 text-sm md:text-base focus:outline-none focus:ring-2 focus:ring-green-500"
                     placeholder="Enter blog title"
                   />
                 </div>
@@ -324,9 +324,9 @@ const Blog = () => {
                     name="excerpt"
                     value={currentBlog.excerpt}
                     onChange={handleInputChange}
-                    rows={2}
-                    className="w-full border rounded px-3 py-2"
-                    placeholder="Short summary for blog listing"
+                    rows={3}
+                    className="w-full rounded border px-3 py-2 text-sm md:text-base focus:outline-none focus:ring-2 focus:ring-green-500"
+                    placeholder="Short summary for listings"
                   />
                 </div>
 
@@ -341,8 +341,8 @@ const Blog = () => {
                     onChange={handleInputChange}
                     rows={6}
                     required
-                    className="w-full border rounded px-3 py-2"
-                    placeholder="Write full blog content here..."
+                    className="w-full rounded border px-3 py-2 text-sm md:text-base focus:outline-none focus:ring-2 focus:ring-green-500"
+                    placeholder="Write full blog content..."
                   />
                 </div>
 
@@ -356,7 +356,7 @@ const Blog = () => {
                     name="author"
                     value={currentBlog.author}
                     onChange={handleInputChange}
-                    className="w-full border rounded px-3 py-2"
+                    className="w-full rounded border px-3 py-2 text-sm md:text-base"
                     placeholder="Author name"
                   />
                 </div>
@@ -370,7 +370,7 @@ const Blog = () => {
                     name="category"
                     value={currentBlog.category}
                     onChange={handleInputChange}
-                    className="w-full border rounded px-3 py-2"
+                    className="w-full rounded border px-3 py-2 text-sm md:text-base"
                   >
                     <option value="">Select category</option>
                     {categories
@@ -393,8 +393,8 @@ const Blog = () => {
                     name="readTime"
                     value={currentBlog.readTime}
                     onChange={handleInputChange}
-                    className="w-full border rounded px-3 py-2"
-                    placeholder="e.g. 5 min read"
+                    className="w-full rounded border px-3 py-2 text-sm md:text-base"
+                    placeholder="5 min read"
                   />
                 </div>
 
@@ -406,7 +406,7 @@ const Blog = () => {
                     name="tags"
                     value={currentBlog.tags.join(", ")}
                     onChange={handleInputChange}
-                    className="w-full border rounded px-3 py-2"
+                    className="w-full rounded border px-3 py-2 text-sm md:text-base"
                     placeholder="comma,separated,tags"
                   />
                 </div>
@@ -422,17 +422,18 @@ const Blog = () => {
                     onChange={handleImageChange}
                     className="block w-full text-sm"
                   />
+
                   {imagePreview && (
                     <img
                       src={imagePreview}
                       alt="Preview"
-                      className="mt-3 h-40 rounded object-cover"
+                      className="mt-3 w-full max-h-52 rounded object-cover"
                     />
                   )}
                 </div>
 
-                {/* Published */}
-                <div className="flex items-center gap-2">
+                {/* Publish */}
+                <div className="flex items-center gap-2 md:col-span-2">
                   <input
                     type="checkbox"
                     checked={currentBlog.published}
@@ -442,23 +443,24 @@ const Blog = () => {
                         published: e.target.checked,
                       }))
                     }
+                    className="h-4 w-4"
                   />
                   <span className="text-sm">Publish immediately</span>
                 </div>
               </div>
 
               {/* Actions */}
-              <div className="flex justify-end gap-3 mt-6">
+              <div className="sticky bottom-0 bg-white pt-4 mt-6 border-t flex justify-end gap-3">
                 <button
                   type="button"
                   onClick={resetForm}
-                  className="px-4 py-2 rounded border"
+                  className="px-4 py-2 rounded border text-sm md:text-base"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2 bg-green-600 text-white rounded"
+                  className="px-5 py-2 bg-green-600 text-white rounded text-sm md:text-base"
                 >
                   {isEditing ? "Update Blog" : "Create Blog"}
                 </button>
