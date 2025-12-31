@@ -101,28 +101,33 @@ const Products = () => {
     reader.readAsDataURL(file)
   }, [])
 
-  const handleSubmit = useCallback(
-    async (e) => {
-      e.preventDefault()
-
-      const payload = {
-        ...formData,
-        price: Number(formData.price)
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+  
+    const payload = new FormData()
+  
+    payload.append('title', formData.title)
+    payload.append('description', formData.description)
+    payload.append('price', Number(formData.price))
+    payload.append('category', formData.category)
+    payload.append('inStock', formData.inStock)
+  
+    if (formData.image) {
+      payload.append('image', formData.image)
+    }
+  
+    try {
+      if (editingProduct) {
+        await updateProduct(editingProduct._id, payload)
+      } else {
+        await createProduct(payload)
       }
-
-      try {
-        if (editingProduct) {
-          await updateProduct(editingProduct._id, payload)
-        } else {
-          await createProduct(payload)
-        }
-        resetForm()
-      } catch (err) {
-        console.error('Error saving product:', err)
-      }
-    },
-    [formData, editingProduct, createProduct, updateProduct, resetForm]
-  )
+      resetForm()
+    } catch (err) {
+      console.error('Error saving product:', err)
+    }
+  }
+  
 
   const handleEdit = useCallback((product) => {
     setEditingProduct(product)
