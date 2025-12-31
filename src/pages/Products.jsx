@@ -104,16 +104,13 @@ const Products = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
   
-    const payload = new FormData()
-  
-    payload.append('title', formData.title)
-    payload.append('description', formData.description)
-    payload.append('price', Number(formData.price))
-    payload.append('category', formData.category)
-    payload.append('inStock', formData.inStock)
-  
-    if (formData.image) {
-      payload.append('image', formData.image)
+    const payload = {
+      title: formData.title,
+      description: formData.description,
+      price: Number(formData.price),
+      category: formData.category,
+      inStock: formData.inStock,
+      image: formData.image || null
     }
   
     try {
@@ -127,6 +124,7 @@ const Products = () => {
       console.error('Error saving product:', err)
     }
   }
+  
   
 
   const handleEdit = useCallback((product) => {
