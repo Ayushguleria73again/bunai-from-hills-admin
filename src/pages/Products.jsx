@@ -204,7 +204,7 @@ const Products = () => {
                   <td className="px-6 py-4">
                     {p.imageUrl ? (
                       <img
-                        src={`${IMAGE_BASE_URL}${p.imageUrl}`}
+                        src={`${p.imageUrl}`}
                         alt={p.title}
                         className="w-16 h-16 rounded object-cover"
                       />

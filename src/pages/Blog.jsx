@@ -247,7 +247,7 @@ const Blog = () => {
             <div key={blog._id} className="bg-white shadow rounded overflow-hidden">
               {blog.imageUrl && (
                 <img
-                  src={`${IMAGE_BASE_URL}${blog.imageUrl}`}
+                  src={`${blog.imageUrl}`}
                   alt={blog.title}
                   className="h-48 w-full object-cover"
                 />

@@ -155,7 +155,7 @@ const Gallery = () => {
             >
               <div className="aspect-square">
                 <img
-                  src={`${IMAGE_BASE_URL}${item.imageUrl}`}
+                  src={`${item.imageUrl}`}
                   alt={item.title || 'Gallery item'}
                   className="w-full h-full object-cover"
                 />
