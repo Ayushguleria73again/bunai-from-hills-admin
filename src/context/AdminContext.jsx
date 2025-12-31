@@ -118,7 +118,8 @@ export const AdminProvider = ({ children }) => {
       const { data } = await api.get('/products', { signal: c.signal })
       setProducts(data)
     } catch (e) {
-      if (!axios.isCancel(e)) fail(e, 'Failed to fetch products')
+      if (!axios.isCancel(e)) console.log
+      (e, 'Failed to fetch products')
     } finally {
       setLoading(l => ({ ...l, products: false }))
     }
@@ -131,7 +132,8 @@ export const AdminProvider = ({ children }) => {
       const { data } = await api.get('/orders', { signal: c.signal })
       setOrders(data)
     } catch (e) {
-      if (!axios.isCancel(e)) fail(e, 'Failed to fetch orders')
+      if (!axios.isCancel(e)) console.log
+      (e, 'Failed to fetch orders')
     } finally {
       setLoading(l => ({ ...l, orders: false }))
     }
@@ -144,7 +146,8 @@ export const AdminProvider = ({ children }) => {
       const { data } = await api.get('/contact', { signal: c.signal })
       setCustomers(data)
     } catch (e) {
-      if (!axios.isCancel(e)) fail(e, 'Failed to fetch customers')
+      if (!axios.isCancel(e)) console.log
+      (e, 'Failed to fetch customers')
     } finally {
       setLoading(l => ({ ...l, customers: false }))
     }
@@ -157,7 +160,8 @@ export const AdminProvider = ({ children }) => {
       const { data } = await api.get('/gallery', { signal: c.signal })
       setGalleryItems(data)
     } catch (e) {
-      if (!axios.isCancel(e)) fail(e, 'Failed to fetch gallery')
+      if (!axios.isCancel(e)) console.log
+      (e, 'Failed to fetch gallery')
     } finally {
       setLoading(l => ({ ...l, gallery: false }))
     }
@@ -170,7 +174,8 @@ export const AdminProvider = ({ children }) => {
       const { data } = await api.get('/blog', { signal: c.signal })
       setBlogs(data)
     } catch (e) {
-      if (!axios.isCancel(e)) fail(e, 'Failed to fetch blogs')
+      if (!axios.isCancel(e)) console.log
+      (e, 'Failed to fetch blogs')
     } finally {
       setLoading(l => ({ ...l, blogs: false }))
     }
@@ -185,7 +190,8 @@ export const AdminProvider = ({ children }) => {
       addToast('Product created', 'success')
       return data
     } catch (e) {
-      fail(e, 'Create product failed')
+      console.log
+      (e, 'Create product failed')
       throw e
     }
   }
@@ -197,7 +203,8 @@ export const AdminProvider = ({ children }) => {
       addToast('Product updated', 'success')
       return data
     } catch (e) {
-      fail(e, 'Update product failed')
+      console.log
+      (e, 'Update product failed')
       throw e
     }
   }
@@ -208,7 +215,8 @@ export const AdminProvider = ({ children }) => {
       setProducts(v => v.filter(i => i._id !== id))
       addToast('Product deleted', 'success')
     } catch (e) {
-      fail(e, 'Delete product failed')
+      console.log
+      (e, 'Delete product failed')
       throw e
     }
   }
@@ -220,7 +228,8 @@ export const AdminProvider = ({ children }) => {
       addToast('Gallery item added', 'success')
       return data
     } catch (e) {
-      fail(e, 'Create gallery failed')
+      console.log
+      (e, 'Create gallery failed')
       throw e
     }
   }
@@ -231,7 +240,8 @@ export const AdminProvider = ({ children }) => {
       setGalleryItems(v => v.filter(i => i._id !== id))
       addToast('Gallery item deleted', 'success')
     } catch (e) {
-      fail(e, 'Delete gallery failed')
+      console.log
+      (e, 'Delete gallery failed')
       throw e
     }
   }
@@ -242,7 +252,8 @@ export const AdminProvider = ({ children }) => {
       setBlogs(v => [data, ...v])
       return data
     } catch (e) {
-      fail(e, 'Create blog failed')
+      console.log
+      (e, 'Create blog failed')
       throw e
     }
   }
@@ -253,7 +264,8 @@ export const AdminProvider = ({ children }) => {
       setBlogs(v => v.map(i => i._id === id ? data : i))
       return data
     } catch (e) {
-      fail(e, 'Update blog failed')
+      console.log
+      (e, 'Update blog failed')
       throw e
     }
   }
@@ -263,7 +275,8 @@ export const AdminProvider = ({ children }) => {
       await api.delete(`/blog/${id}`)
       setBlogs(v => v.filter(i => i._id !== id))
     } catch (e) {
-      fail(e, 'Delete blog failed')
+      console.log
+      (e, 'Delete blog failed')
       throw e
     }
   }
@@ -275,7 +288,8 @@ export const AdminProvider = ({ children }) => {
       addToast('Order updated', 'success')
       return data
     } catch (e) {
-      fail(e, 'Order update failed')
+      console.log
+      (e, 'Order update failed')
       throw e
     }
   }
@@ -285,7 +299,8 @@ export const AdminProvider = ({ children }) => {
       await api.post('/contact/reply', { email, subject, message })
       addToast('Reply sent', 'success')
     } catch (e) {
-      fail(e, 'Reply failed')
+      console.log
+      (e, 'Reply failed')
       throw e
     }
   }
