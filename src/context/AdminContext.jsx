@@ -97,17 +97,17 @@ export const AdminProvider = ({ children }) => {
     const fd = new FormData()
     Object.entries(obj || {}).forEach(([k, v]) => {
       if (v === undefined || v === null) return
+  
+      // ✅ CRITICAL FIX
+      if (k === 'image' && !(v instanceof File)) return
+  
       if (Array.isArray(v)) fd.append(k, JSON.stringify(v))
       else if (typeof v === 'boolean') fd.append(k, String(v))
       else fd.append(k, v)
     })
     return fd
   }
-
-  const fail = (e, msg) => {
-    console.error(msg, e)
-    addToast(e?.response?.data?.message || msg, 'error')
-  }
+  
 
   /* ================= FETCH ================= */
 
