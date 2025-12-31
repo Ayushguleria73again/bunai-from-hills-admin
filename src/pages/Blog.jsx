@@ -298,10 +298,10 @@ const Blog = () => {
 
             {/* form kept same */}
             <form onSubmit={handleSubmit}>
-              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
                 {/* Title */}
                 <div className="md:col-span-2">
-                  <label className="block text-sm font-medium mb-1">
+                  <label className="block mb-1 text-xs font-medium">
                     Title
                   </label>
                   <input
@@ -310,45 +310,42 @@ const Blog = () => {
                     value={currentBlog.title}
                     onChange={handleInputChange}
                     required
-                    className="w-full rounded border px-3 py-2 text-sm md:text-base focus:outline-none focus:ring-2 focus:ring-green-500"
-                    placeholder="Enter blog title"
+                    className="w-full rounded border px-2 py-1.5 text-sm focus:ring-1 focus:ring-green-500"
                   />
                 </div>
 
                 {/* Excerpt */}
                 <div className="md:col-span-2">
-                  <label className="block text-sm font-medium mb-1">
+                  <label className="block mb-1 text-xs font-medium">
                     Excerpt
                   </label>
                   <textarea
                     name="excerpt"
                     value={currentBlog.excerpt}
                     onChange={handleInputChange}
-                    rows={3}
-                    className="w-full rounded border px-3 py-2 text-sm md:text-base focus:outline-none focus:ring-2 focus:ring-green-500"
-                    placeholder="Short summary for listings"
+                    rows={2}
+                    className="w-full rounded border px-2 py-1.5 text-sm focus:ring-1 focus:ring-green-500"
                   />
                 </div>
 
                 {/* Content */}
                 <div className="md:col-span-2">
-                  <label className="block text-sm font-medium mb-1">
+                  <label className="block mb-1 text-xs font-medium">
                     Content
                   </label>
                   <textarea
                     name="content"
                     value={currentBlog.content}
                     onChange={handleInputChange}
-                    rows={6}
+                    rows={5}
                     required
-                    className="w-full rounded border px-3 py-2 text-sm md:text-base focus:outline-none focus:ring-2 focus:ring-green-500"
-                    placeholder="Write full blog content..."
+                    className="w-full rounded border px-2 py-1.5 text-sm focus:ring-1 focus:ring-green-500"
                   />
                 </div>
 
                 {/* Author */}
                 <div>
-                  <label className="block text-sm font-medium mb-1">
+                  <label className="block mb-1 text-xs font-medium">
                     Author
                   </label>
                   <input
@@ -356,23 +353,22 @@ const Blog = () => {
                     name="author"
                     value={currentBlog.author}
                     onChange={handleInputChange}
-                    className="w-full rounded border px-3 py-2 text-sm md:text-base"
-                    placeholder="Author name"
+                    className="w-full rounded border px-2 py-1.5 text-sm"
                   />
                 </div>
 
                 {/* Category */}
                 <div>
-                  <label className="block text-sm font-medium mb-1">
+                  <label className="block mb-1 text-xs font-medium">
                     Category
                   </label>
                   <select
                     name="category"
                     value={currentBlog.category}
                     onChange={handleInputChange}
-                    className="w-full rounded border px-3 py-2 text-sm md:text-base"
+                    className="w-full rounded border px-2 py-1.5 text-sm"
                   >
-                    <option value="">Select category</option>
+                    <option value="">Select</option>
                     {categories
                       .filter((c) => c !== "all")
                       .map((cat) => (
@@ -385,7 +381,7 @@ const Blog = () => {
 
                 {/* Read Time */}
                 <div>
-                  <label className="block text-sm font-medium mb-1">
+                  <label className="block mb-1 text-xs font-medium">
                     Read Time
                   </label>
                   <input
@@ -393,41 +389,38 @@ const Blog = () => {
                     name="readTime"
                     value={currentBlog.readTime}
                     onChange={handleInputChange}
-                    className="w-full rounded border px-3 py-2 text-sm md:text-base"
-                    placeholder="5 min read"
+                    className="w-full rounded border px-2 py-1.5 text-sm"
                   />
                 </div>
 
                 {/* Tags */}
                 <div>
-                  <label className="block text-sm font-medium mb-1">Tags</label>
+                  <label className="block mb-1 text-xs font-medium">Tags</label>
                   <input
                     type="text"
                     name="tags"
                     value={currentBlog.tags.join(", ")}
                     onChange={handleInputChange}
-                    className="w-full rounded border px-3 py-2 text-sm md:text-base"
-                    placeholder="comma,separated,tags"
+                    className="w-full rounded border px-2 py-1.5 text-sm"
                   />
                 </div>
 
                 {/* Image */}
                 <div className="md:col-span-2">
-                  <label className="block text-sm font-medium mb-1">
+                  <label className="block mb-1 text-xs font-medium">
                     Featured Image
                   </label>
                   <input
                     type="file"
                     accept="image/*"
                     onChange={handleImageChange}
-                    className="block w-full text-sm"
+                    className="text-xs"
                   />
-
                   {imagePreview && (
                     <img
                       src={imagePreview}
                       alt="Preview"
-                      className="mt-3 w-full max-h-52 rounded object-cover"
+                      className="mt-2 h-32 rounded object-cover"
                     />
                   )}
                 </div>
@@ -443,26 +436,26 @@ const Blog = () => {
                         published: e.target.checked,
                       }))
                     }
-                    className="h-4 w-4"
+                    className="h-3.5 w-3.5"
                   />
-                  <span className="text-sm">Publish immediately</span>
+                  <span className="text-xs">Publish immediately</span>
                 </div>
               </div>
 
               {/* Actions */}
-              <div className="sticky bottom-0 bg-white pt-4 mt-6 border-t flex justify-end gap-3">
+              <div className="mt-4 flex justify-end gap-2 border-t pt-3">
                 <button
                   type="button"
                   onClick={resetForm}
-                  className="px-4 py-2 rounded border text-sm md:text-base"
+                  className="px-3 py-1.5 text-xs rounded border"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2 bg-green-600 text-white rounded text-sm md:text-base"
+                  className="px-4 py-1.5 text-xs rounded bg-green-600 text-white"
                 >
-                  {isEditing ? "Update Blog" : "Create Blog"}
+                  {isEditing ? "Update" : "Create"}
                 </button>
               </div>
             </form>
