@@ -200,31 +200,61 @@ const Orders = () => {
       )}
 
       {/* MODAL */}
-      {selectedOrder && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white max-w-4xl w-full rounded p-6">
-            <button
-              onClick={() => setSelectedOrder(null)}
-              className="float-right"
-            >
-              <FontAwesomeIcon icon={faTimes} />
-            </button>
+{selectedOrder && (
+  <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+    <div className="bg-white max-w-4xl w-full rounded p-6 relative">
+      <button
+        onClick={() => setSelectedOrder(null)}
+        className="absolute top-4 right-4 text-gray-600"
+      >
+        <FontAwesomeIcon icon={faTimes} />
+      </button>
 
-            <h2 className="text-xl font-semibold mb-4">
-              {getOrderTitle(selectedOrder.items)}
-            </h2>
+      <h2 className="text-xl font-semibold mb-4">
+        {getOrderTitle(selectedOrder.items)}
+      </h2>
 
-            {(selectedOrder.items || []).map((item, i) => (
-              <div key={i} className="flex justify-between py-1 text-sm">
-                <span>{item.title} × {item.quantity}</span>
-                <span>
-                  ₹{(item.price * item.quantity).toLocaleString('en-IN')}
-                </span>
-              </div>
-            ))}
+      {/* CUSTOMER DETAILS */}
+      <div className="mb-6 p-4 bg-gray-50 rounded">
+        <h3 className="font-semibold mb-2">Customer Details</h3>
+        <p><strong>Name:</strong> {selectedOrder.customerInfo?.fullName}</p>
+        <p><strong>Email:</strong> {selectedOrder.customerInfo?.email}</p>
+        <p><strong>Phone:</strong> {selectedOrder.customerInfo?.phone}</p>
+        <p>
+          <strong>Address:</strong>{" "}
+          {selectedOrder.customerInfo?.address},{" "}
+          {selectedOrder.customerInfo?.city},{" "}
+          {selectedOrder.customerInfo?.state} –{" "}
+          {selectedOrder.customerInfo?.pincode}
+        </p>
+      </div>
+
+      {/* ORDER ITEMS */}
+      <div className="border-t pt-4">
+        <h3 className="font-semibold mb-2">Order Items</h3>
+        {(selectedOrder.items || []).map((item, i) => (
+          <div key={i} className="flex justify-between py-1 text-sm">
+            <span>{item.title} × {item.quantity}</span>
+            <span>
+              ₹{(item.price * item.quantity).toLocaleString('en-IN')}
+            </span>
           </div>
-        </div>
-      )}
+        ))}
+      </div>
+
+      {/* TOTAL */}
+      <div className="border-t mt-4 pt-4 flex justify-between font-semibold">
+        <span>Total Amount</span>
+        <span>₹{selectedOrder.totalAmount.toLocaleString('en-IN')}</span>
+      </div>
+
+      <p className="text-sm mt-2 text-gray-600">
+        Payment Method: {selectedOrder.paymentMethod.toUpperCase()}
+      </p>
+    </div>
+  </div>
+)}
+
     </div>
   )
 }
